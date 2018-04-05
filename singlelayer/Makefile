@@ -5,7 +5,7 @@ all: singlelayer.o main.o
 singlelayer.o: singlelayer.c singlelayer.h
 	gcc -Wall -c singlelayer.c
 
-main.o: main.c singlelayer.h singlylinkedlist.h
+main.o: main.c singlelayer.h
 	gcc -Wall -c main.c
 
 clean:
