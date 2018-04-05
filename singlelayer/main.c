@@ -1,5 +1,4 @@
 #include "singlelayer.h"
-#include "singlylinkedlist.h"
 #include <stdio.h>
 #include <math.h>
 
