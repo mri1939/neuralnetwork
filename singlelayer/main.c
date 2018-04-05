@@ -4,16 +4,19 @@
 
 int main()
 {
+    /**
+     * Training data for AND logic
+    */
     double x[4][2] = {
         {1.0, 0.0}, 
         {0.0, 1.0}, 
         {0.0, 0.0}, 
         {1.0, 1.0}};
     double y[4][1] = {
-        {1.0}, 
-        {1.0}, 
-        {1.0}, 
-        {0.0}};
+        {0.0}, 
+        {0.0}, 
+        {0.0}, 
+        {1.0}};
     createNetwork(2, 1, 0.03);
     learn(4, x, y, 50000);
     printf("1 : %f \n", predict(x[0])[0]);
