@@ -34,9 +34,14 @@ double sigmoid_deriv(double z)
     return sigmoid(z) * (1 - sigmoid(z));
 }
 
-double error(double y, double p)
+double error(double *y, double *prediction)
 {
-    return pow((p - y), 2) / 2;
+    double err = 0.0;
+    for (int i = 0; i < output_size; i++)
+    {
+        err += pow((prediction[i] - y[i]), 2) / 2;
+    }
+    return err/output_size;
 }
 
 double *sumfunction(double *x)
@@ -79,14 +84,14 @@ void learn(int numOfTrain, double x[numOfTrain][input_size], double y[numOfTrain
                 for (int l = 0; l < input_size; l++)
                 {
                     //printf("%f ",x[j][l]);
-                    delta_w = (a[k] - y[j][k]) *sigmoid_deriv(z[k])* x[j][l];
+                    delta_w = (a[k] - y[j][k]) * sigmoid_deriv(z[k]) * x[j][l];
                     weights[k * input_size + l] -= learn_rate * delta_w;
                 }
-                delta_b = (a[k] - y[j][k])*sigmoid_deriv(z[k]);
+                delta_b = (a[k] - y[j][k]) * sigmoid_deriv(z[k]);
                 bias[k] -= learn_rate * delta_b;
-                double cost = error(y[j][k], a[k]);
-                printf("cost : %f\n", cost);
             }
+            double cost = error(y[j], a);
+            printf("cost : %f\n", cost);
         }
     }
 }
