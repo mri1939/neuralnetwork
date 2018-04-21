@@ -1,23 +1,11 @@
 #ifndef MULTILAYER_H
 #define MULTILAYER_H
 
-typedef struct layer{
-    int numOfNode;
-    int layernum;
-    double *activations;
-    double *sums;
-} layer;
+extern int num_of_layer;
+extern int *layer_sizes;
 
-typedef struct weights{
-    int layernum;
-    int inputSize;
-    int outputSize;
-    double *weights;
-} weights;
-
-extern int numOfLayer;
-extern int *layerSizes;
-
-void createNetwork(int numOfLayer, int *layerSizes, double learn_rate);
+void createNetwork(int n, int *l, double learn_rate);
 double *feedForward(double *input);
+double *miniBatchSGD();
+double updateMiniBatch();
 #endif
