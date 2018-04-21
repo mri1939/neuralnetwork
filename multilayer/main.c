@@ -1,18 +1,10 @@
-#include "singlylinkedlist.h"
-#include "stdio.h"
+#include "multilayer.h"
+#include <stdio.h>
 
-void printList(node *head){
-    node *p = head;
-    while(p){
-        printf("%d",*(int*)p->value);
-        p = p->next;
-    }
-    printf("\n");
-}
-
-int main(){
-    int val=10;
-    node *head = createList(&val);
-    printList(head);
-    return 0;
+int main()
+{
+  int numOfLayer = 3;
+  int layers[3] = {3,4,2};
+  createNetwork(numOfLayer,layers,0.003);
+  return 0;
 }
